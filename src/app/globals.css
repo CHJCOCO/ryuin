@@ -1,0 +1,319 @@
+@import "tailwindcss";
+
+/* ================================================
+   폰트 정의 섹션 - 여기서 폰트를 쉽게 변경할 수 있습니다
+   ================================================ */
+
+/* 커스텀 한글 폰트들 - 필요에 따라 사용 */
+@font-face {
+  font-family: 'LeeSeoyunB';
+  src: url('/fonts/LeeSeoyunB.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'MaruBuri';
+  src: url('/fonts/MaruBuri-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'MaruBuri-SemiBold';
+  src: url('/fonts/MaruBuri-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'MaruBuri-Bold';
+  src: url('/fonts/MaruBuri-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'KOTRA';
+  src: url('/fonts/KOTRA_BOLD.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'NanumGgocNaeEum';
+  src: url('/fonts/NanumGgocNaeEum.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'NanumHaNaSonGeurSsi';
+  src: url('/fonts/NanumHaNaSonGeurSsi.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url('/fonts/Pretendard-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url('/fonts/Pretendard-SemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url('/fonts/Pretendard-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'NanumSquareRoundEB';
+  src: url('/fonts/NanumSquareRoundEB.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'JalnanGothicTTF';
+  src: url('/fonts/JalnanGothicTTF.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ================================================
+   CSS 변수 정의 - 폰트 변경의 핵심
+   ================================================ */
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  
+  /* 폰트 패밀리 정의 - 여기서 쉽게 변경 가능 */
+  --font-primary: var(--font-noto-sans-kr), 'LeeSeoyunB', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-secondary: var(--font-inter), -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-accent: 'MaruBuri', var(--font-noto-sans-kr), sans-serif;
+  --font-display: 'KOTRA', var(--font-noto-sans-kr), sans-serif;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-primary);
+  --font-mono: var(--font-geist-mono);
+}
+
+/* ================================================
+   기본 폰트 적용
+   ================================================ */
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: var(--font-primary);
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+/* ================================================
+   폰트 유틸리티 클래스들
+   ================================================ */
+
+.font-primary {
+  font-family: var(--font-primary);
+}
+
+.font-secondary {
+  font-family: var(--font-secondary);
+}
+
+.font-accent {
+  font-family: var(--font-accent);
+}
+
+.font-display {
+  font-family: var(--font-display);
+  font-weight: bold;
+}
+
+/* ================================================
+   나머지 스타일들
+   ================================================ */
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Smooth scrolling for all elements */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.animate-fadeInDown {
+  animation: fadeInDown 0.8s ease-out;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.8s ease-out;
+}
+
+.animate-slideInRight {
+  animation: slideInRight 0.8s ease-out;
+}
+
+/* Gradient backgrounds */
+.gradient-bg {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.gradient-bg-light {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+/* Custom button styles */
+.btn-primary {
+  background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 50%, #5b21b6 100%);
+  @apply text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #7c3aed 0%, #5b21b6 50%, #4c1d95 100%);
+}
+
+.btn-primary:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.5);
+}
+
+/* 접근성 개선 - 포커스 스타일 */
+.focus-visible:focus {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+/* 색상 대비 개선 */
+.text-gray-400-accessible {
+  color: #6b7280; /* gray-500 - 대비 개선 */
+}
+
+.text-gray-300-accessible {
+  color: #4b5563; /* gray-600 - 대비 개선 */
+}
+
+.btn-secondary {
+  @apply bg-gray-100 hover:bg-gray-200 text-gray-800 font-semibold py-3 px-6 rounded-lg transition-all duration-300 border border-gray-300 hover:border-gray-400;
+}
+
+/* Card styles */
+.card {
+  @apply bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2;
+}
+
+/* Background layers */
+.bg-surface {
+  @apply relative;
+}
+
+.bg-layer {
+  @apply absolute inset-0;
+}
+
+.bg-wrapper {
+  @apply absolute inset-0 overflow-hidden;
+}
+
+/* Section spacing */
+.section-padding {
+  @apply py-16 md:py-24;
+}
+
+.container-custom {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}

@@ -1,0 +1,456 @@
+================================
+RYUIN 프로젝트 상세 구조 및 기능 가이드
+================================
+
+📌 프로젝트 개요
+================
+프로젝트명: ryuin
+버전: 0.1.0
+설명: 웹사이트 제작 비즈니스를 위한 전문적인 소개 및 포트폴리오 웹사이트
+기술 스택: Next.js 15 + React 19 + TypeScript + Tailwind CSS
+
+주요 목적:
+- 웹사이트 제작 서비스 홍보
+- 포트폴리오 프로젝트 전시
+- 고객 문의 및 상담 접수
+- 전문성과 신뢰도 구축
+
+🗂️ 전체 프로젝트 구조
+=====================
+
+📁 루트 디렉토리
+---------------
+/
+├── .next/                    # Next.js 빌드 결과물 (자동 생성)
+├── .git/                     # Git 저장소 정보
+├── docs/                     # 프로젝트 문서들
+├── public/                   # 정적 파일들 (이미지, 폰트, 아이콘 등)
+├── src/                      # 소스 코드 메인 디렉토리
+├── node_modules/             # 의존성 패키지들
+├── package.json              # 프로젝트 의존성 및 스크립트 정의
+├── package-lock.json         # 의존성 정확한 버전 정보
+├── tsconfig.json             # TypeScript 설정
+├── next.config.ts            # Next.js 설정
+├── next-env.d.ts             # Next.js TypeScript 타입 정의
+├── postcss.config.mjs        # PostCSS 설정 (Tailwind CSS 처리)
+├── eslint.config.mjs         # ESLint 코드 품질 검사 설정
+├── vercel.json               # Vercel 배포 설정
+├── README.md                 # 프로젝트 설명서
+├── FONT_GUIDE.md             # 폰트 사용 가이드
+├── .gitignore                # Git에서 제외할 파일 목록
+└── robots.txt                # 검색엔진 크롤링 규칙
+
+📁 Public 디렉토리 (정적 자산)
+=============================
+public/
+├── fonts/                    # 웹 폰트 파일들
+├── images/                   # 이미지 파일들
+│   ├── portfolio/           # 포트폴리오 프로젝트 이미지
+│   ├── og-image.png         # 소셜 미디어 공유용 이미지
+│   └── logo/                # 로고 및 브랜드 이미지
+├── lottie/                   # Lottie 애니메이션 파일들
+├── video/                    # 동영상 파일들
+├── favicon.ico               # 파비콘
+├── site.webmanifest          # PWA 매니페스트 파일
+├── robots.txt                # 검색엔진 크롤링 규칙
+└── *.svg                     # 벡터 아이콘들
+
+📁 Source 디렉토리 (소스 코드)
+============================
+
+📂 src/app/ - Next.js App Router 구조
+------------------------------------
+app/
+├── layout.tsx                # 전체 앱 레이아웃 및 메타데이터
+├── page.tsx                  # 메인 홈페이지
+├── globals.css               # 전역 CSS 스타일
+├── not-found.tsx             # 404 에러 페이지
+├── sitemap.ts                # 사이트맵 생성 (SEO)
+├── favicon.ico               # 파비콘
+├── terms/                    # 이용약관 페이지
+└── privacy/                  # 개인정보처리방침 페이지
+
+📂 src/components/ - 재사용 가능한 컴포넌트들
+------------------------------------------
+components/
+├── layout/                   # 레이아웃 관련 컴포넌트
+│   ├── Header.tsx           # 상단 헤더 및 네비게이션 메뉴
+│   └── Footer.tsx           # 하단 푸터
+└── sections/                 # 페이지 섹션별 컴포넌트
+    ├── HeroSection.tsx      # 메인 히어로 섹션
+    ├── AboutSection.tsx     # 회사 소개 섹션
+    ├── ServicesSection.tsx  # 서비스 소개 섹션
+    ├── PortfolioSection.tsx # 포트폴리오 갤러리 섹션
+    └── ContactSection.tsx   # 문의 폼 섹션
+
+📂 src/data/ - 데이터 관리
+-------------------------
+data/
+├── portfolio.ts              # 포트폴리오 프로젝트 데이터
+└── testimonials.ts           # 고객 후기 데이터
+
+📂 src/lib/ - 유틸리티 및 라이브러리
+---------------------------------
+lib/
+├── constants.ts              # 상수 정의 (연락처, 소셜 링크 등)
+├── utils.ts                  # 공통 유틸리티 함수들
+└── analytics.ts              # 분석 도구 설정 (GA, Clarity)
+
+📂 src/types/ - TypeScript 타입 정의
+----------------------------------
+types/
+└── index.ts                  # 모든 타입 정의 모음
+
+🔧 주요 파일별 상세 기능 설명
+===========================
+
+🏠 메인 애플리케이션 구조
+-----------------------
+
+1. src/app/layout.tsx (앱 전체 레이아웃)
+   기능:
+   - 전체 앱의 HTML 구조 정의
+   - 메타데이터 및 SEO 설정
+   - 폰트 로딩 (Inter, Noto Sans KR)
+   - Open Graph, Twitter Card 설정
+   - JSON-LD 구조화 데이터 (조직 정보)
+   - Google Analytics, Microsoft Clarity 스크립트
+   - 파비콘 및 아이콘 설정
+
+2. src/app/page.tsx (메인 홈페이지)
+   기능:
+   - 모든 섹션 컴포넌트들을 순서대로 렌더링
+   - Header, Footer 포함
+   - 페이지 구조: Hero → About → Services → Portfolio → Contact
+
+3. src/app/globals.css (전역 스타일)
+   기능:
+   - Tailwind CSS 베이스 스타일
+   - 커스텀 CSS 애니메이션
+   - 전역 컴포넌트 스타일링
+   - 반응형 디자인 기본 설정
+
+🧩 컴포넌트 상세 기능
+===================
+
+📍 레이아웃 컴포넌트
+------------------
+
+1. src/components/layout/Header.tsx
+   기능:
+   - 반응형 네비게이션 메뉴
+   - 스크롤에 따른 헤더 스타일 변화
+   - 모바일 햄버거 메뉴
+   - 부드러운 스크롤 네비게이션
+   - 접근성 고려 (키보드 네비게이션)
+
+2. src/components/layout/Footer.tsx
+   기능:
+   - 연락처 정보 표시
+   - 소셜 미디어 링크
+   - 서비스 링크 모음
+   - 저작권 정보
+   - 회사 정보 및 주소
+
+📍 섹션 컴포넌트 (각 섹션별 주요 기능)
+------------------------------------
+
+1. src/components/sections/HeroSection.tsx
+   기능:
+   - 메인 히어로 섹션 (첫 화면)
+   - 타이핑 애니메이션 효과
+   - CTA 버튼 (Call-to-Action)
+   - 백그라운드 그라데이션 애니메이션
+   - 스크롤 다운 인디케이터
+
+2. src/components/sections/AboutSection.tsx
+   기능:
+   - 회사 소개 및 미션/비전
+   - 팀 정보 및 전문성 어필
+   - 통계 정보 (완료 프로젝트 수, 만족도 등)
+   - 애니메이션 카운터 효과
+   - 회사 가치 제안 (Value Proposition)
+
+3. src/components/sections/ServicesSection.tsx
+   기능:
+   - 제공 서비스 목록 (웹사이트, 쇼핑몰, 랜딩페이지 등)
+   - 각 서비스별 특징 및 가격 정보
+   - 인기 서비스 하이라이트
+   - 호버 효과 및 인터랙션
+   - 서비스 비교 표
+
+4. src/components/sections/PortfolioSection.tsx
+   기능:
+   - 포트폴리오 프로젝트 갤러리
+   - 카테고리별 필터링 (전체, 웹사이트, 쇼핑몰, 랜딩페이지, 웹앱)
+   - 프로젝트 상세 정보 모달
+   - 사용 기술 스택 표시
+   - 라이브 데모 링크
+   - 반응형 그리드 레이아웃
+
+5. src/components/sections/ContactSection.tsx
+   기능:
+   - 문의 폼 (이름, 이메일, 전화번호, 제목, 내용)
+   - 프로젝트 유형 선택
+   - 예산 범위 선택
+   - EmailJS를 통한 실시간 이메일 전송
+   - 폼 유효성 검사
+   - 로딩 상태 및 성공/실패 메시지
+   - 연락처 정보 표시
+
+📊 데이터 관리
+=============
+
+1. src/data/portfolio.ts
+   포함 데이터:
+   - 8개의 샘플 포트폴리오 프로젝트
+   - 각 프로젝트별 정보:
+     * 제목, 카테고리, 설명
+     * 사용 기술 스택
+     * 라이브 URL
+     * 상세 설명 및 주요 기능
+     * 대표 이미지
+
+   제공 함수:
+   - getProjectsByCategory(): 카테고리별 프로젝트 필터링
+   - getProjectById(): 특정 프로젝트 조회
+   - getFeaturedProjects(): 인기 프로젝트 조회
+
+2. src/data/testimonials.ts
+   포함 데이터:
+   - 고객 후기 및 리뷰
+   - 각 후기별 정보:
+     * 고객명, 직책, 회사
+     * 후기 내용 및 평점
+     * 프로필 사진
+
+🔨 유틸리티 및 라이브러리
+=======================
+
+1. src/lib/constants.ts
+   포함 상수:
+   - CONTACT_INFO: 회사 연락처 정보
+   - SOCIAL_LINKS: 소셜 미디어 링크
+   - NAVIGATION_ITEMS: 메뉴 항목
+   - EMAILJS_CONFIG: 이메일 서비스 설정
+   - SEO_CONFIG: SEO 관련 설정
+
+2. src/lib/utils.ts
+   포함 함수:
+   - cn(): Tailwind CSS 클래스 병합
+   - scrollToElement(): 부드러운 스크롤
+   - formatPhoneNumber(): 전화번호 형식화
+   - isValidEmail(): 이메일 유효성 검사
+   - isValidPhoneNumber(): 전화번호 유효성 검사
+   - debounce(), throttle(): 성능 최적화 함수
+   - formatCurrency(): 화폐 형식화
+   - copyToClipboard(): 클립보드 복사
+   - storage: 로컬 스토리지 헬퍼 함수들
+
+3. src/lib/analytics.ts
+   기능:
+   - Google Analytics 4 설정
+   - Microsoft Clarity 설정
+   - 사용자 행동 추적
+   - 이벤트 추적 함수들
+
+📝 타입 정의
+===========
+
+src/types/index.ts에서 정의된 주요 타입들:
+
+1. 폼 관련 타입
+   - ContactFormData: 문의 폼 데이터 구조
+   - FormErrors: 폼 유효성 검사 에러
+   - SubmitStatus: 폼 제출 상태
+
+2. 포트폴리오 관련 타입
+   - Project: 프로젝트 정보 구조
+   - PortfolioFilter: 포트폴리오 필터 타입
+
+3. UI 관련 타입
+   - Service: 서비스 정보 구조
+   - Testimonial: 고객 후기 구조
+   - NavigationItem: 네비게이션 메뉴 구조
+   - SocialLink: 소셜 링크 구조
+
+4. 기타 타입
+   - Theme: 테마 타입 (light/dark)
+   - SEOData: SEO 메타데이터 구조
+   - APIResponse: API 응답 구조
+
+⚙️ 설정 파일들
+=============
+
+1. package.json
+   주요 의존성:
+   - Next.js 15.3.3 (React 프레임워크)
+   - React 19.0.0 (UI 라이브러리)
+   - TypeScript 5 (타입 안전성)
+   - Tailwind CSS 4 (스타일링)
+   - Framer Motion 12.16.0 (애니메이션)
+   - EmailJS 4.4.1 (이메일 전송)
+   - React Hook Form 7.57.0 (폼 관리)
+
+   스크립트:
+   - dev: 개발 서버 실행
+   - build: 프로덕션 빌드
+   - start: 프로덕션 서버 실행
+   - lint: 코드 품질 검사
+
+2. tsconfig.json
+   기능:
+   - TypeScript 컴파일러 설정
+   - 절대 경로 import 설정 (@/ 별칭)
+   - 엄격한 타입 체크 활성화
+
+3. next.config.ts
+   기능:
+   - Next.js 프레임워크 설정
+   - 이미지 최적화 설정
+   - 빌드 최적화 옵션
+
+4. vercel.json
+   기능:
+   - Vercel 배포 플랫폼 설정
+   - 라우팅 규칙 정의
+   - 헤더 및 리다이렉트 설정
+
+🚀 주요 기능 특징
+================
+
+📱 반응형 디자인
+--------------
+- 모바일, 태블릿, 데스크톱 완벽 지원
+- Tailwind CSS의 반응형 유틸리티 활용
+- 터치 친화적 인터페이스
+
+🎨 모던한 UI/UX
+--------------
+- 깔끔하고 전문적인 디자인
+- 부드러운 애니메이션 효과
+- 직관적인 사용자 인터페이스
+- 일관된 디자인 시스템
+
+🔍 SEO 최적화
+------------
+- 메타태그 완벽 설정
+- Open Graph, Twitter Card 지원
+- JSON-LD 구조화 데이터
+- 사이트맵 자동 생성
+- 검색엔진 친화적 URL 구조
+
+⚡ 성능 최적화
+------------
+- Next.js 서버사이드 렌더링
+- 이미지 최적화 (Next.js Image)
+- 코드 스플리팅
+- 레이지 로딩
+
+📧 이메일 시스템
+--------------
+- EmailJS를 통한 실시간 이메일 전송
+- 폼 유효성 검사
+- 스팸 방지 기능
+- 사용자 친화적 피드백
+
+📈 분석 및 추적
+--------------
+- Google Analytics 4 통합
+- Microsoft Clarity 사용자 행동 분석
+- 이벤트 추적
+- 성과 측정 가능
+
+🛡️ 접근성 (Accessibility)
+-------------------------
+- 키보드 네비게이션 지원
+- 스크린 리더 친화적
+- ARIA 속성 적용
+- 색상 대비 최적화
+
+🔒 보안 및 품질
+--------------
+- TypeScript로 타입 안전성 보장
+- ESLint 코드 품질 검사
+- 입력값 검증 및 sanitization
+- HTTPS 강제 적용
+
+💡 사용법 및 커스터마이징 가이드
+=============================
+
+🔧 개발 환경 설정
+---------------
+1. Node.js 18+ 설치
+2. npm install (의존성 설치)
+3. npm run dev (개발 서버 실행)
+4. http://localhost:3000 접속
+
+📝 컨텐츠 수정 방법
+-----------------
+1. 연락처 정보: src/lib/constants.ts의 CONTACT_INFO 수정
+2. 포트폴리오: src/data/portfolio.ts의 portfolioProjects 배열 수정
+3. 서비스 정보: 각 섹션 컴포넌트 내부의 데이터 배열 수정
+4. 이미지: public/images/ 디렉토리에 추가 후 경로 수정
+
+🎨 스타일 커스터마이징
+--------------------
+1. 색상: tailwind.config.js에서 커스텀 색상 정의
+2. 폰트: src/app/layout.tsx에서 Google Fonts 변경
+3. 애니메이션: src/app/globals.css에서 CSS 애니메이션 수정
+
+📧 이메일 설정
+-------------
+1. EmailJS 계정 생성 (https://emailjs.com)
+2. 서비스 및 템플릿 생성
+3. src/lib/constants.ts의 EMAILJS_CONFIG 업데이트
+
+📊 분석 도구 설정
+---------------
+1. Google Analytics 4 측정 ID 발급
+2. Microsoft Clarity 프로젝트 ID 발급
+3. src/lib/analytics.ts에서 ID 교체
+
+🚀 배포 방법
+===========
+
+📌 Vercel 배포 (권장)
+-------------------
+1. GitHub에 코드 푸시
+2. Vercel 계정 생성 및 연결
+3. 자동 배포 설정 완료
+
+📌 기타 플랫폼
+-------------
+- Netlify: npm run build 후 배포
+- AWS S3: 정적 웹사이트 호스팅
+- GitHub Pages: Next.js static export 설정
+
+🔮 향후 확장 가능 기능
+====================
+
+- 실시간 채팅 시스템
+- 관리자 대시보드
+- 블로그 섹션
+- 다국어 지원 (i18n)
+- 견적 계산기
+- 다크 모드
+- PWA 기능
+- 고객 리뷰 관리 시스템
+
+📞 기술 지원
+===========
+
+문제 발생 시 확인사항:
+1. Node.js 버전 (18+ 필요)
+2. 패키지 설치 상태 (npm install)
+3. 환경 변수 설정
+4. 브라우저 콘솔 에러 메시지
+
+문의처:
+- 이메일: contact@ryuin.studio
+- 전화: 010-1234-5678
+
+이 문서는 ryuin 프로젝트의 전체 구조와 기능을 상세히 설명한 종합 가이드입니다.
+프로젝트 이해, 유지보수, 확장 개발에 활용하시기 바랍니다.
+
+마지막 업데이트: 2024년 12월 

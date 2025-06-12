@@ -1,0 +1,265 @@
+RYUIN 웹사이트 프로젝트 구조 및 기능 명세서
+==============================================
+
+📁 프로젝트 개요
+- 프로젝트명: RYUIN - 성과를 만드는 웹사이트
+- 기술 스택: Next.js 14, React, TypeScript, Tailwind CSS, Framer Motion
+- 설명: 웹사이트 제작 서비스를 제공하는 전문 에이전시의 공식 웹사이트
+
+📁 루트 디렉토리 구조
+===================
+
+├── src/                    # 소스 코드 디렉토리
+├── public/                 # 정적 파일 디렉토리
+├── docs/                   # 프로젝트 문서
+├── package.json            # 의존성 관리 및 스크립트
+├── tsconfig.json           # TypeScript 설정
+├── next.config.ts          # Next.js 설정
+├── tailwind.config.ts      # Tailwind CSS 설정
+├── postcss.config.mjs      # PostCSS 설정
+├── eslint.config.mjs       # ESLint 설정
+├── vercel.json             # Vercel 배포 설정
+├── README.md               # 프로젝트 설명서
+└── FONT_GUIDE.md           # 폰트 가이드
+
+📁 src/ 디렉토리 상세 구조
+========================
+
+📂 src/app/ - Next.js App Router 관련 파일
+------------------------------------------
+├── layout.tsx              # 전역 레이아웃 및 메타데이터 설정
+│   └── 기능: 
+│       - SEO 메타데이터 정의 ("성과를 만드는 웹사이트")
+│       - Google Analytics, Microsoft Clarity 설정
+│       - 전역 폰트 설정 (Inter, Noto Sans KR)
+│       - HTML 구조 및 기본 스타일링
+│
+├── page.tsx                # 메인 페이지 컴포넌트
+│   └── 기능: 모든 섹션 컴포넌트를 조합하여 완전한 페이지 구성
+│
+├── globals.css             # 전역 CSS 스타일
+│   └── 기능:
+│       - 커스텀 폰트 정의 (@font-face)
+│       - CSS 변수 설정 (--font-primary, --font-secondary 등)
+│       - 전역 애니메이션 키프레임
+│       - 스크롤바 커스터마이징
+│       - 버튼 스타일 (.btn-primary)
+│
+├── favicon.ico             # 파비콘
+├── terms/page.tsx          # 서비스 이용약관 페이지
+└── privacy/page.tsx        # 개인정보처리방침 페이지
+
+📂 src/components/ - React 컴포넌트
+---------------------------------
+
+📁 src/components/layout/ - 레이아웃 컴포넌트
+-------------------------------------------
+├── Header.tsx              # 상단 네비게이션 헤더
+│   └── 기능:
+│       - 스크롤에 따른 배경색 변화 (투명 → 불투명)
+│       - 반응형 로고 및 브랜드명 표시
+│       - 데스크톱/모바일 네비게이션 메뉴
+│       - 부드러운 스크롤 애니메이션
+│       - 모바일 햄버거 메뉴
+│
+└── Footer.tsx              # 하단 푸터
+    └── 기능:
+        - 회사 정보 및 연락처
+        - 소셜 미디어 링크
+        - 법적 고지사항 링크
+        - 라이트/다크 테마 지원
+
+📁 src/components/sections/ - 페이지 섹션 컴포넌트
+-----------------------------------------------
+├── HeroSection.tsx         # 메인 히어로 섹션 (19KB, 489줄)
+│   └── 기능:
+│       - 3개 슬라이드 자동 전환 시스템
+│       - 타이핑 애니메이션 효과
+│       - "성과를 만드는 웹사이트", "디자인과 기술의 균형", "지속 가능한 웹 구축"
+│       - 배경 이미지 슬라이드쇼
+│       - 네비게이션 화살표 및 인디케이터
+│       - 핵심 서비스 4개 Lottie 애니메이션 표시
+│
+├── AboutSection.tsx        # 회사 소개 섹션 (9.6KB, 230줄)
+│   └── 기능:
+│       - "Navigating The Digital Ocean" 메인 타이틀
+│       - 프로모션 비디오 영역
+│       - 브랜드 철학 및 가치 설명
+│       - 좌우 분할 이미지 레이아웃
+│       - 전문성 강조 콘텐츠
+│
+├── ServicesSection.tsx     # 서비스 소개 섹션 (6.8KB, 209줄)
+│   └── 기능:
+│       - "OUR SERVICES" 타이틀 및 장식선
+│       - 서비스 설명 텍스트 (반응형 웹, 쇼핑몰, 브랜드 사이트 등)
+│       - Lottie 애니메이션 (talk.json)
+│       - RYUIN 브랜드명 무한 스크롤 애니메이션
+│       - 색상: #0891b2 (청록색) 강조
+│
+├── PortfolioSection.tsx    # 포트폴리오 섹션 (11KB, 325줄)
+│   └── 기능:
+│       - 6개 프로젝트 슬라이드쇼
+│       - 자동재생/일시정지 기능
+│       - 프로젝트 카테고리별 분류
+│       - 반응형 카드 레이아웃
+│       - 호버 효과 및 전환 애니메이션
+│
+└── ContactSection.tsx      # 연락처/문의 섹션 (24KB, 649줄)
+    └── 기능:
+        - React Hook Form을 이용한 문의 폼
+        - 프로젝트 유형 선택 (웹사이트, 쇼핑몰 등)
+        - 예산 범위 선택
+        - 벤치마킹 사이트 입력
+        - 파일 첨부 기능
+        - 이메일 전송 시스템
+        - 폼 유효성 검사
+
+📂 src/lib/ - 유틸리티 및 라이브러리
+---------------------------------
+├── constants.ts            # 전역 상수 정의
+│   └── 내용:
+│       - SITE_CONFIG: 사이트 기본 정보
+│       - NAVIGATION_ITEMS: 메뉴 구조
+│       - PORTFOLIO_CATEGORIES: 포트폴리오 카테고리
+│       - PROJECT_TYPES: 프로젝트 유형
+│
+├── utils.ts                # 유틸리티 함수
+│   └── 기능:
+│       - 클래스명 병합 함수
+│       - 이메일 발송 함수
+│       - 폼 데이터 처리
+│       - 이미지 최적화 헬퍼
+│
+└── analytics.ts            # 분석 도구 설정
+    └── 기능:
+        - Google Analytics 설정
+        - 이벤트 트래킹
+        - 사용자 행동 분석
+
+📂 src/data/ - 정적 데이터
+-------------------------
+├── portfolio.ts            # 포트폴리오 프로젝트 데이터
+│   └── 내용:
+│       - 6개 샘플 프로젝트 정보
+│       - 카페, 패션, SaaS, 부동산, 레스토랑, 헬스케어
+│       - 각 프로젝트별 기술스택, 기능, 설명
+│
+└── testimonials.ts         # 고객 후기 데이터
+    └── 내용: 고객 리뷰 및 평점 데이터
+
+📂 src/types/ - TypeScript 타입 정의
+----------------------------------
+└── index.ts                # 전체 프로젝트 타입 정의
+    └── 내용:
+        - Project 인터페이스
+        - Contact 폼 타입
+        - Navigation 타입
+        - Portfolio 카테고리 타입
+
+📁 public/ 디렉토리 구조
+======================
+
+📂 public/images/ - 이미지 파일
+------------------------------
+└── ryuin.png               # 메인 로고 이미지
+
+📂 public/lottie/ - Lottie 애니메이션 파일
+----------------------------------------
+└── talk.json               # 서비스 섹션 애니메이션
+
+📂 public/fonts/ - 웹폰트 파일
+-----------------------------
+├── Pretendard-Bold.otf     # 본문 폰트 (굵게)
+├── NanumSquareRoundEB.ttf  # 제목 폰트
+└── JalnanGothicTTF.ttf     # 장식 폰트
+
+📂 public/video/ - 비디오 파일
+-----------------------------
+└── (비디오 파일들)          # About 섹션용 프로모션 영상
+
+🔧 주요 기능 및 특징
+==================
+
+1. 반응형 디자인
+   - 모바일, 태블릿, 데스크톱 최적화
+   - Tailwind CSS 기반 유틸리티 클래스
+
+2. 애니메이션 및 인터랙션
+   - Framer Motion을 활용한 부드러운 애니메이션
+   - Lottie 애니메이션 통합
+   - 스크롤 기반 애니메이션
+
+3. SEO 최적화
+   - Next.js 14 App Router 활용
+   - 메타데이터 최적화
+   - 구조화된 데이터
+
+4. 성능 최적화
+   - 이미지 최적화 (Next.js Image 컴포넌트)
+   - 코드 스플리팅
+   - 지연 로딩
+
+5. 분석 및 트래킹
+   - Google Analytics 연동
+   - Microsoft Clarity 설정
+   - 사용자 행동 분석
+
+6. 접근성
+   - 시맨틱 HTML 구조
+   - 키보드 네비게이션 지원
+   - 스크린 리더 호환성
+
+📋 파일별 라인 수 및 크기
+========================
+
+대용량 파일 (10KB 이상):
+- ContactSection.tsx: 24KB (649줄) - 문의 폼 로직
+- HeroSection.tsx: 19KB (489줄) - 메인 슬라이드 시스템
+- PortfolioSection.tsx: 11KB (325줄) - 포트폴리오 갤러리
+
+중간 크기 파일 (5-10KB):
+- AboutSection.tsx: 9.6KB (230줄)
+- Header.tsx: 9.6KB (252줄)
+- Footer.tsx: 8.9KB (192줄)
+- ServicesSection.tsx: 6.8KB (209줄)
+- portfolio.ts: 7.1KB (164줄)
+- utils.ts: 6.0KB (218줄)
+- globals.css: 6.2KB (299줄)
+
+소규모 파일 (5KB 미만):
+- analytics.ts: 4.0KB (134줄)
+- constants.ts: 3.0KB (84줄)
+- layout.tsx: 3.0KB (91줄)
+- types/index.ts: 2.7KB (140줄)
+
+🚀 배포 및 설정
+==============
+
+- Vercel을 통한 자동 배포
+- 환경 변수 설정 필요:
+  - Google Analytics ID
+  - Microsoft Clarity ID
+  - 이메일 서비스 설정
+
+💡 브랜딩 및 디자인 시스템
+========================
+
+주요 색상:
+- 강조색: #0891b2 (청록색)
+- 텍스트: #000000 (검은색)
+- 배경: #ffffff (흰색)
+- 회색 계열: Tailwind 기본 팔레트
+
+폰트 시스템:
+- 영문: Inter (Google Fonts)
+- 한글: Noto Sans KR (Google Fonts)
+- 로컬 폰트: Pretendard, NanumSquareRoundEB
+
+슬로건:
+- 메인: "성과를 만드는 웹사이트"
+- 서브: "디지털의 바다에서 방향을 잃지 않는 정교한 웹 솔루션"
+
+==============
+마지막 업데이트: 2024년
+프로젝트 관리자: RYUIN Team
+============== 
