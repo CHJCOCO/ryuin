@@ -18,7 +18,7 @@ const PortfolioSection = () => {
       title: 'Studio Y',
       subtitle: '모던 포토그래퍼 포트폴리오',
       description: '미니멀한 디자인과 고품질 이미지 갤러리로 구성된 사진작가 전용 포트폴리오 웹사이트',
-      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2426&q=80',
+      image: '/images/portfolio/p.png',
       url: 'https://example.com',
       category: '포트폴리오'
     },
@@ -27,25 +27,17 @@ const PortfolioSection = () => {
       title: 'Blooming Shop',
       subtitle: '감성 플라워 온라인 쇼핑몰',
       description: '꽃과 식물 판매를 위한 감각적인 이커머스 플랫폼. 계절별 테마와 구독 서비스 포함',
-      image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2340&q=80',
+      image: '/images/portfolio/f.png',
       url: 'https://example.com',
       category: '이커머스'
     },
-    {
-      id: 3,
-      title: 'MatchUp',
-      subtitle: '스타트업 매칭 플랫폼',
-      description: '투자자와 스타트업을 연결하는 플랫폼의 랜딩페이지. 신뢰성과 전문성을 강조한 디자인',
-      image: 'https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=2340&q=80',
-      url: 'https://example.com',
-      category: '플랫폼'
-    },
+
     {
       id: 4,
       title: 'Creative Agency',
       subtitle: '크리에이티브 에이전시 브랜드 사이트',
       description: '창의적인 서비스를 제공하는 에이전시의 브랜드 아이덴티티를 담은 웹사이트',
-      image: 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&auto=format&fit=crop&w=2340&q=80',
+      image: '/images/portfolio/c.png',
       url: 'https://example.com',
       category: '브랜드'
     },
@@ -54,7 +46,7 @@ const PortfolioSection = () => {
       title: 'TechStart',
       subtitle: '테크 스타트업 제품 소개',
       description: 'SaaS 제품의 기능과 장점을 명확하게 전달하는 제품 소개 웹사이트',
-      image: 'https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=2342&q=80',
+      image: '/images/portfolio/t.png',
       url: 'https://example.com',
       category: '제품소개'
     },
@@ -63,7 +55,7 @@ const PortfolioSection = () => {
       title: 'Wellness Center',
       subtitle: '힐링 웰니스 센터',
       description: '요가, 명상, 마사지 등 웰니스 서비스 예약과 정보를 제공하는 편안한 느낌의 웹사이트',
-      image: 'https://images.unsplash.com/photo-1545389336-cf090694435e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2340&q=80',
+      image: '/images/portfolio/w.png',
       url: 'https://example.com',
       category: '서비스'
     }
@@ -112,7 +104,7 @@ const PortfolioSection = () => {
 
 
   return (
-    <section id="portfolio" className="relative py-20 bg-gray-50">
+    <section id="portfolio" className="relative py-12 md:py-20 bg-gray-50">
       <div className="container-custom">
         {/* 섹션 제목 */}
         <div className="flex items-center mb-12 title-container">
@@ -150,23 +142,53 @@ const PortfolioSection = () => {
                       {/* 프로젝트 정보 */}
                       <div className="text-left">
                         <div className="mb-6">
-                          <span className="text-white/70 text-sm font-medium tracking-wider uppercase">
+                          <span 
+                            className="text-white/70 text-sm font-medium tracking-wider uppercase"
+                            style={{
+                              fontFamily: 'Pretendard, -apple-system, BlinkMacSystemFont, system-ui, sans-serif',
+                              fontWeight: '500',
+                              letterSpacing: '0.1em'
+                            }}
+                          >
                             {project.category}
                           </span>
                         </div>
                         
-                        <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 leading-tight">
+                        <h2 
+                          className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 leading-tight"
+                          style={{
+                            fontFamily: 'Pretendard, -apple-system, BlinkMacSystemFont, system-ui, sans-serif',
+                            fontWeight: '700',
+                            letterSpacing: '-0.01em',
+                            textShadow: '2px 2px 4px rgba(0,0,0,0.8)'
+                          }}
+                        >
                           {project.title}
                         </h2>
                         
-                        <h3 className="text-xl md:text-2xl text-white/80 mb-8 font-light">
+                        <h3 
+                          className="text-xl md:text-2xl text-white/80 mb-8 font-light"
+                          style={{
+                            fontFamily: 'Pretendard, -apple-system, BlinkMacSystemFont, system-ui, sans-serif',
+                            fontWeight: '400',
+                            letterSpacing: '0.01em',
+                            lineHeight: '1.5'
+                          }}
+                        >
                           {project.subtitle}
                         </h3>
                         
                         <div className="w-16 h-px bg-white/30 mb-8"></div>
                         
                         <div className="flex items-center gap-4 text-white/70">
-                          <span className="text-sm">
+                          <span 
+                            className="text-sm"
+                            style={{
+                              fontFamily: 'Pretendard, -apple-system, BlinkMacSystemFont, system-ui, sans-serif',
+                              fontWeight: '500',
+                              letterSpacing: '0.05em'
+                            }}
+                          >
                             {String(currentSlide + 1).padStart(2, '0')} / {String(projects.length).padStart(2, '0')}
                           </span>
                         </div>
@@ -212,23 +234,22 @@ const PortfolioSection = () => {
                 <PlayIcon className="h-4 w-4" />
               )}
             </button>
-
-            {/* 인디케이터 */}
-            <div className="flex gap-1.5">
-              {projects.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => goToSlide(index)}
-                  className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${
-                    index === currentSlide 
-                      ? 'bg-gray-900 w-6' 
-                      : 'bg-gray-300 hover:bg-gray-400'
-                  }`}
-                  aria-label={`${index + 1}번째 프로젝트로 이동`}
-                />
-              ))}
-            </div>
           </div>
+        </div>
+
+        {/* Progress Dots - 비즈니스 쇼케이스와 동일한 스타일 */}
+        <div className="flex justify-center mt-6 md:mt-8 space-x-2">
+          {projects.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => goToSlide(index)}
+              className={`transition-all duration-300 ${
+                currentSlide === index 
+                  ? 'w-6 md:w-8 h-2 bg-gray-900 rounded-full' 
+                  : 'w-2 h-2 bg-gray-300 rounded-full hover:bg-gray-400'
+              }`}
+            />
+          ))}
         </div>
 
       <style jsx>{`

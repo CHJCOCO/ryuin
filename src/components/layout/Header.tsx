@@ -16,27 +16,35 @@ const Header = () => {
       setIsScrolled(window.scrollY > 50);
       
       // Check which section is currently in view
-      const sections = ['hero', 'about', 'services', 'services-background', 'portfolio', 'contact'];
+      const sections = ['hero', 'about', 'services', 'business-showcase', 'portfolio', 'contact'];
       const sectionElements = sections.map(id => ({
         id,
         element: document.getElementById(id) || document.querySelector(`#${id}`)
       })).filter(section => section.element);
 
       let currentSection = 'hero';
-      const scrollPosition = window.scrollY + 100; // Offset for header height
+      const scrollPosition = window.scrollY + window.innerHeight / 2; // 화면 중앙 기준으로 감지
+
+      // 각 섹션의 중심점과 현재 스크롤 위치의 거리를 계산
+      let closestSection = 'hero';
+      let minDistance = Infinity;
 
       for (const section of sectionElements) {
         if (section.element) {
-          const offsetTop = section.element.offsetTop;
-          const offsetHeight = section.element.offsetHeight;
+          const rect = section.element.getBoundingClientRect();
+          const elementTop = rect.top + window.scrollY;
+          const elementCenter = elementTop + rect.height / 2;
+          const distance = Math.abs(scrollPosition - elementCenter);
           
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-            // services-background 섹션도 services로 인식
-            currentSection = section.id === 'services-background' ? 'services' : section.id;
-            break;
+          if (distance < minDistance) {
+            minDistance = distance;
+            // business-showcase 섹션도 services로 인식
+            closestSection = section.id === 'business-showcase' ? 'services' : section.id;
           }
         }
       }
+
+      currentSection = closestSection;
 
       setActiveSection(currentSection);
     };

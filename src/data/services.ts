@@ -3,8 +3,8 @@ export const SERVICES_DATA = {
   // 메인 서비스 섹션 데이터
   title: 'OUR SERVICES',
   description: {
-    main: '우리는 다양한 목적에 맞는 웹사이트를 제작합니다.',
-    highlight: '반응형 웹, 쇼핑몰, 브랜드 사이트, 리디자인, 랜딩 페이지까지',
+    main: '우리는 다양한 목적에 맞는\n웹사이트를 제작합니다.',
+    highlight: '반응형 웹, 쇼핑몰, 브랜드 사이트,\n리디자인, 랜딩 페이지까지',
     detail: '기기 호환성과 사용성, 디자인 감각,\n마케팅 효과를 모두 고려해 설계합니다.'
   },
   
