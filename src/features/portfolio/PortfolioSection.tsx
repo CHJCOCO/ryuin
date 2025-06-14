@@ -202,22 +202,7 @@ const PortfolioSection = () => {
         </div>
       </div>
 
-        {/* 네비게이션 화살표 */}
-        <button
-          onClick={goToPrevSlide}
-          className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center text-white transition-all duration-200 group"
-          aria-label="이전 슬라이드"
-        >
-          <ChevronLeftIcon className="h-6 w-6 group-hover:-translate-x-1 transition-transform" />
-        </button>
 
-        <button
-          onClick={goToNextSlide}
-          className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center text-white transition-all duration-200 group"
-          aria-label="다음 슬라이드"
-        >
-          <ChevronRightIcon className="h-6 w-6 group-hover:translate-x-1 transition-transform" />
-        </button>
 
         {/* 하단 컨트롤 */}
         <div className="mt-8 flex justify-center">

@@ -13,14 +13,14 @@ const ServicesSection = () => {
     {
       id: 'cafe',
       title: 'THE CAFE',
-      subtitle: '당신의 브랜드를 가장 잘 표현할 웹사이트를 디자인합니다',
+      subtitle: '브랜드를 가장 잘 표현할 웹사이트를 디자인합니다',
       image: '/images/business/cafe.png',
       features: ['모던하고 따뜻한 분위기', '메뉴 및 가격 정보 표시', '온라인 예약 시스템', '소셜미디어 연동']
     },
     {
       id: 'clinic',
       title: 'THE CLINIC',
-      subtitle: '전문성과 신뢰를 전달하는 의료진 웹사이트를 제작합니다',
+      subtitle: '전문성과 신뢰를 전달하는 의료 웹사이트를 제작합니다',
       image: '/images/business/clinic.png',
       features: ['전문적이고 신뢰감 있는 디자인', '진료과목 및 의료진 소개', '온라인 예약 및 상담', '의료 정보 제공']
     },
@@ -165,7 +165,7 @@ const ServicesSection = () => {
               {/* Main Mockup Card */}
               <div className="relative w-full mx-auto">
                 <div 
-                  className="relative bg-white rounded-xl md:rounded-2xl shadow-2xl overflow-hidden transition-all duration-700 ease-in-out transform hover:scale-[1.02] w-full aspect-video md:aspect-[8/5]"
+                  className="relative bg-white rounded-xl md:rounded-2xl shadow-2xl overflow-hidden transition-all duration-700 ease-in-out transform hover:scale-[1.02] w-full aspect-video md:aspect-[8/5] mx-auto"
                   style={{ 
                     maxWidth: '800px',
                     boxShadow: '0 25px 60px -5px rgba(0, 0, 0, 0.1), 0 10px 25px -5px rgba(0, 0, 0, 0.04)'
@@ -180,42 +180,45 @@ const ServicesSection = () => {
                   />
                   
                                      {/* Overlay with Business Info */}
-                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-                   <div className="absolute bottom-0 left-0 right-0 p-4 md:p-8 text-white">
+                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+                   <div className="absolute bottom-2 md:bottom-4 left-0 right-0 p-4 md:p-8 text-white">
                      <h3 
-                       className="text-xl md:text-2xl lg:text-3xl mb-1 md:mb-2"
+                       className="text-2xl md:text-3xl lg:text-4xl mb-2 md:mb-3 font-medium md:font-light"
                        style={{
                          fontFamily: '"SF Pro Display", "Helvetica Neue", -apple-system, BlinkMacSystemFont, Inter, sans-serif',
                          fontWeight: '300',
                          letterSpacing: '-0.01em',
-                         lineHeight: '1.2'
+                         lineHeight: '1.2',
+                         textShadow: '0 2px 4px rgba(0,0,0,0.8), 0 1px 2px rgba(0,0,0,0.9)'
                        }}
                      >
                        {businessShowcase[currentSlide].title}
                      </h3>
                      <p 
-                       className="text-sm md:text-lg opacity-90 mb-2 md:mb-4"
+                       className="text-base md:text-xl opacity-95 md:opacity-90 mb-3 md:mb-5 font-medium md:font-normal"
                        style={{
                          fontFamily: 'Pretendard, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
                          fontWeight: '400',
                          letterSpacing: '0.01em',
-                         lineHeight: '1.5'
+                         lineHeight: '1.5',
+                         textShadow: '0 1px 3px rgba(0,0,0,0.8), 0 1px 2px rgba(0,0,0,0.9)'
                        }}
                      >
                        {businessShowcase[currentSlide].subtitle}
                      </p>
                     
                                          {/* Features List */}
-                     <div className="grid grid-cols-1 md:grid-cols-2 gap-1 md:gap-2 text-xs md:text-sm">
+                     <div className="grid grid-cols-1 md:grid-cols-2 gap-1.5 md:gap-3 text-sm md:text-base">
                        {businessShowcase[currentSlide].features.map((feature, index) => (
                          <div key={index} className="flex items-center space-x-2">
-                           <div className="w-1 h-1 md:w-1.5 md:h-1.5 bg-white rounded-full flex-shrink-0"></div>
+                           <div className="w-1.5 h-1.5 md:w-1.5 md:h-1.5 bg-white rounded-full flex-shrink-0"></div>
                            <span 
-                             className="opacity-80"
+                             className="opacity-90 md:opacity-80 font-medium md:font-normal"
                              style={{
                                fontFamily: 'Pretendard, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
                                fontWeight: '400',
-                               letterSpacing: '0.01em'
+                               letterSpacing: '0.01em',
+                               textShadow: '0 1px 2px rgba(0,0,0,0.7)'
                              }}
                            >
                              {feature}
@@ -227,15 +230,16 @@ const ServicesSection = () => {
                 </div>
 
                                  {/* Agency Badge */}
-                 <div className="absolute -bottom-3 md:-bottom-4 left-1/2 transform -translate-x-1/2">
-                   <div className="bg-white/95 backdrop-blur-sm px-3 md:px-4 py-1 md:py-2 rounded-full shadow-lg border border-gray-100">
+                 <div className="absolute -bottom-6 md:-bottom-4 left-1/2 transform -translate-x-1/2">
+                   <div className="bg-white/95 backdrop-blur-sm px-2 md:px-4 py-1 md:py-2 rounded-full shadow-lg border border-gray-100">
                      <span 
-                       className="text-xs font-medium"
+                       className="text-xs md:text-xs font-medium whitespace-nowrap"
                        style={{
                          fontFamily: 'Pretendard, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
                          fontWeight: '500',
                          letterSpacing: '0.02em',
-                         color: '#862B0D'
+                         color: '#862B0D',
+                         fontSize: '15px'
                        }}
                      >
                        Designed by <span style={{ color: '#86C548' }}>RYUIN</span>{' '}
@@ -248,7 +252,7 @@ const ServicesSection = () => {
           </div>
 
           {/* Thumbnail Slider */}
-          <div className="relative mt-6 md:mt-20">
+          <div className="relative mt-16 md:mt-20">
             {/* Desktop Thumbnail Slider */}
             <div className="hidden md:flex items-center justify-center">
                              {/* Previous Button */}
@@ -512,6 +516,48 @@ const ServicesSection = () => {
                width: 100% !important;
                height: auto !important;
                aspect-ratio: 16/9 !important;
+             }
+             
+             /* Enhanced mobile text visibility - only target overlay, not image */
+             #business-showcase .absolute.inset-0.bg-gradient-to-t {
+               background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 70%, transparent 100%) !important;
+             }
+             
+             /* Mobile text enhancements */
+             #business-showcase h3 {
+               font-weight: 600 !important;
+               text-shadow: 0 2px 4px rgba(0,0,0,0.8), 0 1px 2px rgba(0,0,0,0.9) !important;
+               font-size: 1.5rem !important;
+             }
+             
+             #business-showcase p {
+               font-weight: 500 !important;
+               text-shadow: 0 1px 3px rgba(0,0,0,0.8), 0 1px 2px rgba(0,0,0,0.9) !important;
+               opacity: 0.95 !important;
+               font-size: 1rem !important;
+             }
+             
+             #business-showcase .grid span {
+               font-weight: 500 !important;
+               text-shadow: 0 1px 2px rgba(0,0,0,0.7) !important;
+               opacity: 0.9 !important;
+               font-size: 0.875rem !important;
+             }
+             
+             /* Mobile agency badge positioning and styling */
+             #business-showcase .absolute.-bottom-6 {
+               bottom: -1.5rem !important;
+             }
+             
+             /* Mobile agency badge text sizing */
+             #business-showcase .absolute.-bottom-6 span {
+               font-size: 13px !important;
+               white-space: nowrap !important;
+             }
+             
+             /* Mobile agency badge container sizing */
+             #business-showcase .absolute.-bottom-6 > div {
+               padding: 0.375rem 0.75rem !important;
              }
            }
            
