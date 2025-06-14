@@ -2,8 +2,6 @@
 
 import React, { useState, useEffect } from 'react';
 import { 
-  ChevronLeftIcon,
-  ChevronRightIcon,
   PlayIcon,
   PauseIcon
 } from '@heroicons/react/24/outline';
@@ -89,19 +87,9 @@ const PortfolioSection = () => {
     return () => window.removeEventListener('keydown', handleKeyPress);
   }, [isAutoPlay, projects.length]);
 
-  const goToNextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % projects.length);
-  };
-
-  const goToPrevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + projects.length) % projects.length);
-  };
-
   const goToSlide = (index: number) => {
     setCurrentSlide(index);
   };
-
-
 
   return (
     <section id="portfolio" className="relative py-12 md:py-20 bg-gray-50">
@@ -201,8 +189,6 @@ const PortfolioSection = () => {
           ))}
         </div>
       </div>
-
-
 
         {/* 하단 컨트롤 */}
         <div className="mt-8 flex justify-center">

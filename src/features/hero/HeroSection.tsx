@@ -333,7 +333,7 @@ const HeroSection = () => {
   useEffect(() => {
     const currentTitle = slides[currentSlide]?.title || '';
     
-    if (titleIndex >= 0 && titleIndex < currentTitle.length) {
+    if (titleIndex < currentTitle.length) {
       const timer = setTimeout(() => {
         setDisplayedTitle(currentTitle.slice(0, titleIndex + 1));
         setTitleIndex(prev => prev + 1);
@@ -347,7 +347,7 @@ const HeroSection = () => {
       }, 400);
       return () => clearTimeout(timer);
     }
-  }, [titleIndex, currentSlide, showSubtitle]);
+  }, [titleIndex, currentSlide, showSubtitle, slides]);
 
   // 부제목 타이핑 애니메이션
   useEffect(() => {
@@ -400,7 +400,7 @@ const HeroSection = () => {
       }, 1500); // 타이핑 완료 후 1.5초 대기 (이전 2.5초에서 단축)
       return () => clearTimeout(timer);
     }
-  }, [typingComplete, isAutoPlaying]);
+  }, [typingComplete, isAutoPlaying, slides.length]);
 
   // 이전 슬라이드로 이동
   const goToPrevSlide = () => {

@@ -51,7 +51,7 @@ const ServicesSection = () => {
     // Lottie 애니메이션 데이터를 동적으로 로드
     fetch('/lottie/talk.json')
       .then(response => response.json())
-      .then(data => setTalkAnimation(data))
+              .then(data => setTalkAnimation(data))
       .catch(error => console.error('Error loading animation:', error));
 
     // Auto-advance main slide every 5 seconds
@@ -60,7 +60,7 @@ const ServicesSection = () => {
     }, 5000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [businessShowcase.length]);
 
   const handleMainSlideChange = (index: number) => {
     setCurrentSlide(index);
